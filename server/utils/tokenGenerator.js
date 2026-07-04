@@ -13,8 +13,8 @@ const generateToken = (id, roles) => {
 export const setTokenCookie = (res, token) => {
   res.cookie("token", token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production" ? true : false,
-    sameSite: "strict",
+    secure: true,
+    sameSite: "none",
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
   });
 };
@@ -23,8 +23,8 @@ export const setTokenCookie = (res, token) => {
 export const clearTokenCookie = (res) => {
   res.clearCookie("token", {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production" ? true : false,
-    sameSite: "strict",
+    secure: true,
+    sameSite: "none",
   });
 };
 
